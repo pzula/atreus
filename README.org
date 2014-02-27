@@ -20,26 +20,27 @@ them stagger the rows, which I find very annoying now that I've gotten
 used to the columnar layout of the Ergodox. In addition, many of the
 designs I've seen waste a lot of room on the space bar, failing to
 take into account the fact that the thumb is the strongest and most
-versatile of the fingers. This design avoids both these problems.
+versatile of the fingers. This design avoids both these problems while
+taking a more couch-friendly single-piece approach.
 
 [[atreus.jpg]]
 
 ** Layout
 
-Only a handful of punctuation marks (and no digits) available
+Only a handful of punctuation marks (and no digits) are available
 unshifted, and all the modifiers are on the bottom row.
 
  :    q     w     e     r     t       ||       y     u     i     o    p
  :    a     s     d     f     g       ||       h     j     k     l    ;
  :    z     x     c     v     b       ||       n     m     ,     .    /
- :   esc   tab    fn  shift bksp ctrl || alt space enter super pgup  pgdn
+ :   esc   tab  super shift bksp ctrl || alt space  fn   enter pgup  pgdn
 
 The numbers and most punctuation are on the fn layer:
 
  :    1     2     3     4    5        ||       6     7     8     9    0
  :    -     +     (     )    =        ||       /     [     ]     {    }
- :    !     @     #     $    %        ||       ^     &     *     ?    ~
- :                                    ||       `     _     \
+ :    !     @     #     $    %        ||       ^     &     *     ~    ?
+ :  reset                    `        ||                   _     |    \
 
 I type in Dvorak but prefer to do the remapping in software rather than
 hardware so I don't have to change layouts when I switch to my
@@ -51,11 +52,11 @@ laptop's internal keyboard.
 
 This layout has five modifiers and 37 non-modifiers.
 
-I strongly prefer the feel and sound of tactile [[http://www.digikey.com/product-detail/en/MX1A-E1NW/CH197-ND/20180][Cherry MX blue]]
+I strongly prefer the feel and sound of tactile [[http://mechanicalkeyboards.com/shop/index.php?l=product_detail&p=651][Cherry MX blue]]
 switches for typing. However, I like having linear switches on the
-modifier keys (ctrl, alt, super, shift, and fn). [[http://www.wasdkeyboards.com/index.php/products/keyboard-parts/cherry-mx-red-keyswitch-mx1a-l1nn-linear.html][Cherry MX red
+modifier keys (ctrl, alt, super, shift, and fn). [[http://mechanicalkeyboards.com/shop/index.php?l=product_detail&p=102][Cherry MX red
 switches]] are nice and light but are expensive and difficult to
-find. [[http://www.digikey.com/product-detail/en/MX1A-11NW/CH160-ND/91134][Cherry MX black switches]] are cheaper and easier to source, but
+find. [[http://mechanicalkeyboards.com/shop/index.php?l=product_detail&p=103][Cherry MX black switches]] are cheaper and easier to source, but
 may be too heavy, especially for keys under pinky fingers.
 
 One trick is take the springs from some of your blue switches and
@@ -67,7 +68,7 @@ for non-modifier thumb keys like backspace, space, and enter.
 
 *** Diodes
 
-In order to avoid ghosting, each switch needs a [[http://www.digikey.com/product-detail/en/1N4148TR/1N4148FSTR-ND/458811][diode]].
+In order to avoid ghosting, each switch needs a [[https://www.radioshack.com/product/index.jsp?productId=2062587][1N4148 diode]].
 
 *** Microcontroller
 
@@ -79,13 +80,9 @@ without headers so it will fit in between the bottom layer and the plate.
 This [[http://keyshop.pimpmykeyboard.com/product/dsa-pbt-blank-sets][DSA-shaped base set]] from Signature Plastics has 52 1x keys plus a
 few extras we won't use. It claims on that page to contain only one
 deep key, but my shipment contained two, which I put under the index
-finger keys to help guide your hands without looking.
-
-*** Screws
-
-Seven M3 machine screws and nuts hold the whole thing together. The
-length of the screws depends on the thickness of the materials you use
-for the case.
+finger keys to help guide your hands without looking. However, it only
+contained a single 1.5x keycap, and the middle two thumb keys both use
+them, so you might want to pick up an extra.
 
 ** Case
 
@@ -98,11 +95,15 @@ these should be cut on 3mm acrylic (black in the photo). The third is
 the spacer that goes under the fourth, which is the plate on which the
 switches are mounted. These should be cut in 6mm, especially the
 spacer, which needs to be at least as thick as the micro USB cable you
-connect to the microcontroller.
+connect to the microcontroller. The switch plate could be thinner.
 
 On a 100W Epilog laser, the 3mm layers cut in about a minute and a
 half. I did a run with 6mm acrylic of the other layers which took
 nearly 6 minutes.
+
+One thing to watch for is that the screw holes unfortunately are not
+symmetrical. So before the switches get mounted, it's important to
+ensure that the switch plate is right-side-up.
 
 ** Firmware
 
@@ -112,35 +113,54 @@ all qwerty, but the punctuation keys send keycodes assuming that the
 qwerty->dvorak transformation will be applied to them, so they don't
 make sense otherwise.
 
+You should be able to cd into the `keyboard/atreus` directory and run
+`make KEYMAP=atreus` (or whichever variant you want) to produce a
+`atreus.hex` file. Use this with the `teensy` or Arduino tools to
+upload to the microcontroller. The "reset" button on the lower left
+will ready the Teensy for an upload so you don't have to open the case
+to hit the onboard reset button.
+
 ** Recommended Bill of Materials
 
-- 37 MX Blues @ $1.00
-- 5 MX Blacks @ 0.80
-- 42 diodes @ $0.052
-- Base keycap set: $18.00
-- Teensy 2: $16 OR Arduino Micro: $25
-- USB Mini cable: $1.94
+- 50 MX Blue switches: $29.00 (mechanicalkeyboards.com)
+- 50 diodes: $3.45 (radio shack, should be able to buy in-person)
+- Base keycap set: $18.00 (signatureplastics.com)
+- Teensy 2: $16 (pjrc.com or mechanicalkeyboards.com)
 - Acrylic materials: $11
-- Acrylic laser cutting: 6 at $3/min (varies by thickness of acrylic)
+- Acrylic laser cutting: 7.5 at $3/min (varies by thickness of acrylic)
 
-=(+ 37 (* 5 0.8) (* 42 0.052) 18 16 1.94 11 (* 3 7.5))= -> $112.62 plus tax/shipping
+- 5 MX Black switches: $8.50 (optional)
+- 5 MX Red switches: $10.00 (optional)
 
-- Digikey (switches, diodes, arduino?) US shipping: $5.32
+=(+ 29 3.45 18 16 11 (* 3 7.5))= $99.95 plus tax/shipping
+
+- mechanicalkeyboards.com: free shipping in the US
 - Signature Plastics (keycaps) shipping: $8.00
 - PJRC (teensy) shipping: $3.03
 
+** Other Tools:
+
+You'll need a soldering iron, solder, a multimeter, wire, wire
+strippers, and a USB micro cable. You'll also need seven M3 machine
+screws with nuts; the length of the screws depends on the thickness of
+the acrylic you use.
+
 ** Cost-saving Options
 
-There are a few ways to get the cost under $100. Using all black
-switches brings it down, but I strongly recommend against this unless
-you're already familiar with the feel of the various Cherry
-switches. Using wood for the case will reduce both the materials cost
-as well as the amount of time needed to cut the case.
+There are a few ways to lower the cost further.  Using [[http://mechanicalkeyboards.com/shop/index.php?l=product_detail&p=482][Matias]] key
+switches could save you a fair bit if you go in on a 90-pack with
+someone else, but they're a little harder to find keycaps for; the MX
+caps won't work on them. Using wood for the case will reduce both the
+materials cost as well as the amount of time needed to cut the case.
 
 Replacing the colored acrylic with transparent might also save a few
 dollars. You could also use thinner acrylic for the switch plate too;
 I cut mine in 4.5mm. A thinner spacer is inadvisable; even with 6mm
 it's pretty tight.
+
+Another common trick is scavenging keycaps and switches from used
+keyboards; something with Cherry or Alps switches should work. This
+can be time-consuming though.
 
 ** License
 
