@@ -4,7 +4,7 @@ The [[http://ergodox.org][Ergodox]] keyboard is an absolutely fantastic design; 
 day at my office. However, I like to work away from the office
 frequently, and I thought I might try my hand at designing something a
 little more portable. The great thing about assembling my Ergodox is
-that it taught be there's really nothing magical about it; it's just a
+that it taught me there's really nothing magical about it; it's just a
 piece of circuitry with a bunch of switches read by a microcontroller
 that speaks the USB HID interface.
 
