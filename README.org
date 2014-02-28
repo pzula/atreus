@@ -44,7 +44,8 @@ The numbers and most punctuation are on the fn layer:
 
 I type in Dvorak but prefer to do the remapping in software rather than
 hardware so I don't have to change layouts when I switch to my
-laptop's internal keyboard.
+laptop's internal keyboard. This is all a matter of firmware though;
+the layout is easy to change after the fact.
 
 ** Parts
 
@@ -121,7 +122,7 @@ the onboard reset button to update new versions of the firmware is
 pretty cumbersome; instead use the "reset" button on the lower left
 of the layout which has the same effect.
 
-** Recommended Bill of Materials
+** Bill of Materials
 
 - 50 MX Blue switches: $29.00 (mechanicalkeyboards.com)
 - 50 diodes: $3.45 (radio shack, should be able to buy in-person)
@@ -140,7 +141,24 @@ of the layout which has the same effect.
 - Signature Plastics (keycaps) US shipping: $8.00
 - PJRC (teensy) shipping: $3.03
 
-** Other Tools
+*** Cost-saving Options
+
+There are a few ways to lower the cost further.  Using [[http://mechanicalkeyboards.com/shop/index.php?l=product_detail&p=482][Matias]] key
+switches could save you a fair bit if you go in on a 90-pack with
+someone else, but they're a little harder to find keycaps for; the MX
+caps won't work on them. Using wood for the case will reduce both the
+materials cost as well as the amount of time needed to cut the case.
+
+Replacing the colored acrylic with transparent might also save a few
+dollars. You could also use thinner acrylic for the switch plate too;
+I cut mine in 4.5mm. A thinner spacer is inadvisable; even with 6mm
+it's pretty tight.
+
+Another common trick is scavenging keycaps and switches from used
+keyboards; something with Cherry or Alps switches should work. This
+can be time-consuming though.
+
+*** Other Tools
 
 You'll need a soldering iron, solder, a glue gun, a multimeter, wire,
 wire strippers, and a USB micro cable. You'll also need seven M3
@@ -205,23 +223,6 @@ good time to test it. You'll need to compile and upload as per the
 keycodes from the half of the keyboard that you've wired. Once you've
 confirmed that's working, continue with the other half. Then screw the
 other layers in place and you're all set!
-
-** Cost-saving Options
-
-There are a few ways to lower the cost further.  Using [[http://mechanicalkeyboards.com/shop/index.php?l=product_detail&p=482][Matias]] key
-switches could save you a fair bit if you go in on a 90-pack with
-someone else, but they're a little harder to find keycaps for; the MX
-caps won't work on them. Using wood for the case will reduce both the
-materials cost as well as the amount of time needed to cut the case.
-
-Replacing the colored acrylic with transparent might also save a few
-dollars. You could also use thinner acrylic for the switch plate too;
-I cut mine in 4.5mm. A thinner spacer is inadvisable; even with 6mm
-it's pretty tight.
-
-Another common trick is scavenging keycaps and switches from used
-keyboards; something with Cherry or Alps switches should work. This
-can be time-consuming though.
 
 ** License
 
