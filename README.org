@@ -111,12 +111,15 @@ all qwerty, but the punctuation keys send keycodes assuming that the
 qwerty->dvorak transformation will be applied to them, so they don't
 make sense otherwise.
 
-You should be able to cd into the `keyboard/atreus` directory and run
-`make KEYMAP=atreus` (or whichever variant you want) to produce a
-`atreus.hex` file. Use this with the `teensy` or Arduino tools to
-upload to the microcontroller. The "reset" button on the lower left
-will ready the Teensy for an upload so you don't have to open the case
-to hit the onboard reset button.
+You should be able to cd into the =keyboard/atreus= directory and run
+=make KEYMAP\=atreus= (or whichever variant you want) to produce a
+=atreus.hex= file. Use this with the [[http://www.pjrc.com/teensy/loader.html][teensy loader]] or Arduino tools to
+upload to the microcontroller.
+
+Once the firmware is loaded and the keyboard is assembled, pressing
+the onboard reset button to update new versions of the firmware is
+pretty cumbersome; instead use the "reset" button on the lower left
+of the layout which has the same effect.
 
 ** Recommended Bill of Materials
 
@@ -134,7 +137,7 @@ to hit the onboard reset button.
 =(+ 29 3.45 18 16 11 (* 3 7.5))= $99.95 plus tax/shipping
 
 - mechanicalkeyboards.com: free shipping in the US
-- Signature Plastics (keycaps) shipping: $8.00
+- Signature Plastics (keycaps) US shipping: $8.00
 - PJRC (teensy) shipping: $3.03
 
 ** Other Tools
@@ -197,12 +200,11 @@ backwards. (Which I actually did for the first half.)
 [[controller.jpg]]
 
 Once you've wired one side of the microcontroller in, it would be a
-good time to test it. You'll need to install the [[http://www.pjrc.com/teensy/loader.html][teensy loader]] and
-point it at the .hex file from the tmk firmware build. Then hit the
-physical reset button on the Teensy itself. At this point you should
-be reading real keycodes from the half of the keyboard that you've
-wired. Once you've confirmed that's working, continue with the other
-half. Then screw the other layers in place and you're all set!
+good time to test it. You'll need to compile and upload as per the
+"Firmware" section above. At this point you should be reading real
+keycodes from the half of the keyboard that you've wired. Once you've
+confirmed that's working, continue with the other half. Then screw the
+other layers in place and you're all set!
 
 ** Cost-saving Options
 
