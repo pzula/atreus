@@ -153,10 +153,12 @@ symmetrical, so before inserting the switches it's important to ensure
 that the plate is right-side-up. Use a drop of hot glue on the top and
 bottom of each switch to affix it in place.
 
+[[wires.jpg]]
+
 Once the switches are in place, the matrix must be created. I
 recommend getting red wire for the rows and black for the columns. The
 rows need eight strands of wire with the insulation exposed at
-intervals matching the spacing of the switches; see [[https://secure.flickr.com/photos/43319799@N00/12669228444][this photo]] for
+intervals matching the spacing of the switches; see the above photo for
 details. You could also just use many short stripped segments of wire
 instead of a contiguous piece. Most of the row wires will need four
 segments of insulation, but you'll need two with five for the rows
@@ -164,6 +166,8 @@ with the inner thumb keys. Physically the inner thumb keys look like
 two additional columns, but logically they are treated as if they're
 in the same column with the left one in row 3 and the right one in
 row 4.
+
+[[matrix.jpg]]
 
 The exposed sections of row wire should be connected to the higher of
 the pins on the switch using a diode. Be aware that diodes are
@@ -173,7 +177,7 @@ high; avoid getting in the way of the spacer layer. Once the
 rows are wired, the remaining (negative) pin of each switch should be
 wired into the negative pin of the switch above and below it. Use
 black wire. This should be slightly easier since no diode is
-necessary. [[https://secure.flickr.com/photos/43319799@N00/12668880863][This photo]] shows the completed matrix for one side. Test
+necessary. The photo above shows the completed matrix for one side. Test
 each row and column as you go with a multimeter. You should be able to
 get continuity from row to column when the corresponding switch is
 activated.
@@ -188,8 +192,9 @@ columns go to pins F0, F1, E6, C7, C6, B6, D4, B1, B0, B5, and
 B4. It's important to realize that when you flip over the board
 in order to solder it, you have to flip over the schematic in your
 mind too. If you count your columns from the left, you'll get them
-backwards. (Which I actually did for the first half.) You can see [[https://secure.flickr.com/photos/43319799@N00/1270569443y3][my
-wiring of the microcontroller]].
+backwards. (Which I actually did for the first half.)
+
+[[controller.jpg]]
 
 Once you've wired one side of the microcontroller in, it would be a
 good time to test it. You'll need to install the [[http://www.pjrc.com/teensy/loader.html][teensy loader]] and
