@@ -161,7 +161,7 @@ can be time-consuming though.
 *** Other Tools
 
 You'll need a soldering iron, solder, a glue gun, a multimeter, wire,
-wire strippers, and a USB micro cable. You'll also need seven M3
+wire strippers, and a USB mini cable. You'll also need seven M3
 machine screws with nuts; the length of the screws depends on the
 thickness of the acrylic you use.
 
