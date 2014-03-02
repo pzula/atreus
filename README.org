@@ -33,19 +33,21 @@ unshifted, and all the modifiers are on the bottom row.
  :    q     w     e     r     t       ||       y     u     i     o    p
  :    a     s     d     f     g       ||       h     j     k     l    ;
  :    z     x     c     v     b       ||       n     m     ,     .    /
- :   esc   tab  super shift bksp ctrl || alt space  fn   enter pgup  pgdn
+ :   esc   tab  super shift bksp ctrl || alt space  fn   pgup  pgdn enter
 
 The numbers and most punctuation are on the fn layer:
 
  :    1     2     3     4    5        ||       6     7     8     9    0
  :    -     +     (     )    =        ||       /     [     ]     {    }
  :    !     @     #     $    %        ||       ^     &     *     ~    ?
- :  reset                    `        ||                   _     |    \
+ :  reset                    `        ||     hwdv          _     |    \
 
-I type in Dvorak but prefer to do the remapping in software rather than
-hardware so I don't have to change layouts when I switch to my
-laptop's internal keyboard. This is all a matter of firmware though;
-the layout is easy to change after the fact.
+I type in Dvorak but prefer to do the remapping in software rather
+than hardware so I don't have to change layouts when I switch to my
+laptop's internal keyboard. The =hwdv= key does provide a hardware
+dvorak layer for using other peoples' computers though. This is all a
+matter of firmware though; the layout is easy to change after the
+fact.
 
 ** Parts
 
@@ -114,8 +116,10 @@ make sense otherwise.
 
 You should be able to cd into the =keyboard/atreus= directory and run
 =make KEYMAP\=atreus= (or whichever variant you want) to produce a
-=atreus.hex= file. Use this with the [[http://www.pjrc.com/teensy/loader.html][teensy loader]] or Arduino tools to
-upload to the microcontroller.
+qwerty =atreus.hex= file. You might want to create your own layout
+once you've gotten a chance to try it and see what works for you. Use
+the =.hex= file with the [[http://www.pjrc.com/teensy/loader.html][teensy loader]] or Arduino tools to upload to the
+microcontroller.
 
 Once the firmware is loaded and the keyboard is assembled, pressing
 the onboard reset button to update new versions of the firmware is
@@ -178,8 +182,8 @@ bottom of each switch to affix it in place.
 
 Once the switches are in place, the matrix must be created. I
 recommend getting red wire for the rows and black for the columns. The
-rows need eight strands of wire with the insulation exposed at
-intervals matching the spacing of the switches; see the above photo for
+rows need eight wires with the insulation exposed at intervals
+matching the spacing of the switches; see the above photo for
 details. You could also just use many short stripped segments of wire
 instead of a contiguous piece. Most of the row wires will need four
 segments of insulation, but you'll need two with five for the rows
