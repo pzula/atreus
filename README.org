@@ -181,16 +181,19 @@ bottom of each switch to affix it in place.
 [[wires.jpg]]
 
 Once the switches are in place, the matrix must be created. I
-recommend getting red wire for the rows and black for the columns. The
-rows need eight wires with the insulation exposed at intervals
-matching the spacing of the switches; see the above photo for
-details. You could also just use many short stripped segments of wire
-instead of a contiguous piece. Most of the row wires will need four
-segments of insulation, but you'll need two with five for the rows
-with the inner thumb keys. Physically the inner thumb keys look like
-two additional columns, but logically they are treated as if they're
-in the same column with the left one in row 3 and the right one in
-row 4.
+recommend getting red wire for the (postitive) rows and black for the
+(negative) columns. The rows need eight wires with the insulation
+exposed at intervals matching the spacing of the switches; see the
+above photo for details. You could also just use many short stripped
+segments of wire instead of a contiguous piece.
+
+[[thumb-diagram.jpg]]
+
+Most of the row wires will need four segments of insulation, but
+you'll need two with five for the rows with the inner thumb
+keys. Physically the inner thumb keys look like two additional
+columns, but logically they are treated as if they're in the same
+column with the left one in row 3 and the right one in row 4.
 
 [[matrix.jpg]]
 
@@ -198,14 +201,14 @@ The exposed sections of row wire should be connected to the higher of
 the pins on the switch using a diode. Be aware that diodes are
 directional! The band around the diode should point to the top of the
 board. Take care with the upper row that you don't let the wire go too
-high; avoid getting in the way of the spacer layer. Once the
-rows are wired, the remaining (negative) pin of each switch should be
-wired into the negative pin of the switch above and below it. Use
-black wire. This should be slightly easier since no diode is
-necessary. The photo above shows the completed matrix for one side. Test
-each row and column as you go with a multimeter. You should be able to
-get continuity from row to column when the corresponding switch is
-activated.
+close to the top edge of the board; avoid getting in the way of the
+spacer layer. Once the rows are wired, the remaining (negative) pin of
+each switch should be wired into the negative pin of the switch above
+and below it with black wire. This should be slightly easier since no
+diode is necessary. The photo above shows the completed matrix for one
+side. Test each row and column as you go with a multimeter. You should
+be able to get continuity from row to column when the corresponding
+switch is activated.
 
 After the matrix has been wired on both sides, the next step is to
 connect the microcontroller. The TMK firmware has the rows in pins D0,
