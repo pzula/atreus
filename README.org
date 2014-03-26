@@ -40,7 +40,7 @@ The numbers and most punctuation are on the fn layer:
  :    1     2     3     4    5        ||       6     7     8     9    0
  :    -     +     (     )    =        ||       /     [     ]     {    }
  :    !     @     #     $    %        ||       ^     &     *     ~    ?
- :  reset                    `        ||     hwdv          _     |    \
+ :  reset  ins               `        ||     hwdv          _     |    \
 
 I type in Dvorak but prefer to do the remapping in software rather
 than hardware so I don't have to change layouts when I switch to my
@@ -108,23 +108,22 @@ nearly 6 minutes.
 
 ** Firmware
 
-My [[https://github.com/technomancy/tmk_keyboard/tree/atreus][fork of the tmk firmware]] has support for the Atreus
-layout. Currently only supports software-dvorak--the default layer is
-all qwerty, but the punctuation keys send keycodes assuming that the
-qwerty->dvorak transformation will be applied to them, so they don't
-make sense otherwise.
-
-You should be able to cd into the =keyboard/atreus= directory and run
+My [[https://github.com/technomancy/tmk_keyboard/tree/atreus][fork of the tmk firmware]] has support for the Atreus layout.  You
+should be able to cd into the =keyboard/atreus= directory and run
 =make KEYMAP\=atreus= (or whichever variant you want) to produce a
-qwerty =atreus.hex= file. You might want to create your own layout
-once you've gotten a chance to try it and see what works for you. Use
-the =.hex= file with the [[http://www.pjrc.com/teensy/loader.html][teensy loader]] or Arduino tools to upload to the
-microcontroller.
+qwerty =atreus.hex= file. You will probably want to create your own
+layout once you've gotten a chance to try it and see what works for
+you. Use the =.hex= file with the [[http://www.pjrc.com/teensy/loader.html][teensy loader]] or Arduino tools to
+upload to the microcontroller.
 
 Once the firmware is loaded and the keyboard is assembled, pressing
 the onboard reset button to update new versions of the firmware is
 pretty cumbersome; instead use the "reset" button on the lower left
 of the layout which has the same effect.
+
+I'm working on an experimental Forth-based firmware in the [[https://github.com/technomancy/orestes][Orestes]]
+project, but that project is still in its infancy at the time of this
+writing.
 
 ** Bill of Materials
 
@@ -167,7 +166,8 @@ can be time-consuming though.
 You'll need a soldering iron, solder, a glue gun, a multimeter, wire,
 wire strippers, and a USB mini cable. You'll also need seven M3
 machine screws with nuts; the length of the screws depends on the
-thickness of the acrylic you use.
+thickness of the acrylic you use. You can add rubber feet to thet
+bottom to prevent the board from sliding around when placed on a desk.
 
 ** Assembly
 
@@ -230,6 +230,16 @@ good time to test it. You'll need to compile and upload as per the
 keycodes from the half of the keyboard that you've wired. Once you've
 confirmed that's working, continue with the other half. Then screw the
 other layers in place and you're all set!
+
+** Inspiration
+
+These fine projects all provided inspiration for various aspects of
+the Atreus, as well as the folks on the =#geekhack= freenode channel.
+
+- [[http://ergodox.org][Ergodox]]
+- [[http://deskthority.net/workshop-f7/onehand-20-keyboard-t6617.html][OneHand]]
+- [[http://blog.fsck.com/2013/12/better-and-better-keyboards.html][keyboard.io]]
+- [[http://geekhack.org/index.php?topic=48718][ErgoT]]
 
 ** License
 
