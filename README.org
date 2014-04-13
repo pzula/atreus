@@ -44,7 +44,7 @@ unshifted, and all the modifiers are on the bottom row:
  :    '     ,     .     p     y       ||       f     g     c     r    l
  :    a     o     e     u     i       ||       d     h     t     n    s
  :    ;     q     j     k     x       ||       b     m     w     v    z
- :   esc  paste super shift bksp ctrl || alt space  fn     -     /  enter
+ :   esc   tab  super shift bksp ctrl || alt space  fn     -     /  enter
 
 The numbers and most of the punctuation are on the fn layer with a
 numpad-style arrangement under the right hand:
@@ -52,14 +52,14 @@ numpad-style arrangement under the right hand:
  :    !     @     {     }     |       ||     pgup    7     8     9    *
  :    #     $     (     )     `       ||     pgdn    4     5     6    +
  :    %     ^     [     ]     ~       ||       \     1     2     3    ?
- :  reset   &                         ||     hwdv          .     0    =
+ :  reset paste                       ||     hwdv          .     0    =
 
 An alternate layout has the numbers in a more traditional row across the top:
 
  :    1     2     3     4    5        ||       6     7     8     9    0
  :    -     +     (     )    =        ||       .     [     ]     {    }
  :    !     @     #     $    %        ||       ^     &     *     ~    ?
- :  reset   &                `        ||     hwdv          _     |    \
+ :  reset paste              `        ||     hwdv        pgup  pgdn   \
 
 I type in Dvorak but prefer to do the remapping in software rather
 than hardware so I don't have to change layouts when I switch to my
@@ -80,8 +80,8 @@ This layout has five modifiers and 37 non-modifiers.
 
 I strongly prefer the feel and sound of tactile [[http://mechanicalkeyboards.com/shop/index.php?l=product_detail&p=651][Cherry MX blue]]
 switches for typing. However, I like having linear switches on the
-modifier keys (ctrl, alt, super, shift, and fn). [[http://mechanicalkeyboards.com/shop/index.php?l=product_detail&p=102][Cherry MX red
-switches]] are nice and light but are expensive and difficult to
+modifier keys (ctrl, alt, super, shift, and fn). [[http://mechanicalkeyboards.com/shop/index.php?l=product_detail&p=102][Cherry MX red switches]]
+are nice and light but are expensive and difficult to
 find. [[http://mechanicalkeyboards.com/shop/index.php?l=product_detail&p=103][Cherry MX black switches]] are cheaper and easier to source, but
 may be too heavy, especially for keys under pinky fingers.
 
@@ -90,7 +90,9 @@ trade them with the springs from your black switches. The blacks then
 become the equivalent of reds, and the blues become MX green switches,
 which are a heavier variant of blues. These are typically used for
 space bars on boards that otherwise use blues. They could be suitable
-for non-modifier thumb keys like backspace, space, and enter.
+for non-modifier thumb keys like backspace, space, and enter. However,
+the recommended layout above has all its modifiers under the thumbs,
+so this is not an issue.
 
 *** Diodes
 
@@ -269,6 +271,15 @@ the Atreus, as well as the folks on the =#geekhack= freenode channel.
 - [[http://deskthority.net/workshop-f7/onehand-20-keyboard-t6617.html][OneHand]]
 - [[http://blog.fsck.com/2013/12/better-and-better-keyboards.html][keyboard.io]]
 - [[http://geekhack.org/index.php?topic=48718][ErgoT]]
+
+** Builds
+
+If you've built an Atreus, please let us know (pull request or
+otherwise) and get your name and link added here:
+
+- [[http://technomancy.us/173][Phil Hagelberg]]
+- [[http://blog.tarn-vedra.de/2014/04/reproducing-keyboard-science_1707.html][Moritz Ulrich]]
+- [[http://geekhack.org/index.php?topic=57007.0][Constantine]]
 
 ** License
 
