@@ -30,11 +30,8 @@ well for the kind of work that I do, but it probably wouldn't be a
 good fit for you if you do a lot of numerical data entry or make heavy
 use of function keys, arrows, or home/end. If you primarily use
 programs with good key rebinding functionality, you're probably in
-good shape. For instance, there is no =tab= key, but in a terminal,
-=control-i= literally sends a tab keycode, and other programs can be
-configured to treat it equivalently as well. Similarly, =enter= is in
-a bit of an awkward position, but many programs treat =control-m= as
-the same.
+good shape. For instance, =enter= is in a bit of an awkward position,
+but many programs treat =control-m= as the same.
 
 ** Layout
 
