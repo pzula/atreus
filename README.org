@@ -108,7 +108,8 @@ few extras we won't use. There are two "deep dish" keys in that set
 which you can place under your index fingers on the home row to help
 guide your hands to the right spot without looking. However, you only
 get a single 1.5x keycap, and the middle two thumb keys both use them,
-so you might want to pick up an extra.
+so you might want to pick up an extra. (You can buy a single DSA 1.5x
+keycap from [[http://www.keycapsdirect.com/key-capsinventory.php][Signature Plastics]].)
 
 If you want labels on your keycaps, you can get a full labelled
 standard 104-key set from [[http://elitekeyboards.com/products.php?sub=access#cherrymxkeys][Elite Keyboards]] as well. However, the
