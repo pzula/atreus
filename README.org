@@ -126,9 +126,11 @@ The first two shapes in the case file are the top and bottom covers;
 these should be cut on 3mm acrylic (black in the photo). The third is
 the spacer that goes under the fourth, which is the plate on which the
 switches are mounted. These should be cut in 6mm, especially the
-spacer, which needs to be at least as thick as the micro USB cable you
-connect to the microcontroller. The switch plate could be thinner,
-but not under 3mm.
+spacer, which needs to be at least as thick as the mini USB cable you
+connect to the microcontroller. I recommend using a mini USB cable
+with as thin a connector as you can find or sanding the connector
+down to the required thickness. The switch plate could be thinner, but
+not under 3mm.
 
 On a 100W Epilog laser, the 3mm layers cut in about a minute and a
 half. I did a run with 6mm acrylic of the other layers which took
@@ -193,7 +195,7 @@ can be time-consuming though.
 *** Other Tools
 
 You'll need a soldering iron, solder, a glue gun, a multimeter, wire,
-wire strippers, and a USB mini cable. You'll also need seven M3
+wire strippers, and a 5-pin USB Mini-B cable. You'll also need seven M3
 machine screws with nuts; the length of the screws depends on the
 thickness of the acrylic you use. You can add rubber feet to thet
 bottom to prevent the board from sliding around when placed on a desk.
