@@ -61,8 +61,8 @@ An alternate layout has the numbers in a more traditional row across the top:
 I type in Dvorak but prefer to do the remapping in software rather
 than hardware so I don't have to change layouts when I switch to my
 laptop's internal keyboard. However, the =hwdv= key switches it to
-hardware dvorak mode, which is useful for attaching to computers that
-may not have software dvorak set up. The =paste= key sends
+hardware Dvorak mode, which is useful for attaching to computers that
+may not have software Dvorak set up. The =paste= key sends
 shift+insert, while the =reset= button activates the bootloader,
 allowing easy reprogramming without opening the case.
 
@@ -139,8 +139,8 @@ nearly 6 minutes.
 ** Firmware
 
 My [[https://github.com/technomancy/tmk_keyboard/tree/atreus][fork of the tmk firmware]] has support for the Atreus layout.  You
-should be able to cd into the =keyboard/atreus= directory and run
-=make KEYMAP\=atreus= (or whichever variant you want) to produce a
+should be able to change into the =keyboard/atreus= directory and run
+=make KEYMAP=atreus= (or whichever variant you want) to produce a
 qwerty =atreus.hex= file. You will probably want to create your own
 layout once you've gotten a chance to try it and see what works for
 you. Use the =.hex= file with the [[http://www.pjrc.com/teensy/loader.html][teensy loader]] or Arduino tools to
@@ -197,7 +197,7 @@ can be time-consuming though.
 You'll need a soldering iron, solder, a glue gun, a multimeter, wire,
 wire strippers, and a 5-pin USB Mini-B cable. You'll also need seven M3
 machine screws with nuts; the length of the screws depends on the
-thickness of the acrylic you use. You can add rubber feet to thet
+thickness of the acrylic you use. You can add rubber feet to the
 bottom to prevent the board from sliding around when placed on a desk.
 
 ** Assembly
@@ -212,7 +212,7 @@ bottom of each switch to affix it in place.
 [[wires.jpg]]
 
 Once the switches are in place, the matrix must be created. I
-recommend getting red wire for the (postitive) rows and black for the
+recommend getting red wire for the (positive) rows and black for the
 (negative) columns. The rows need eight wires with the insulation
 exposed at intervals matching the spacing of the switches; see the
 above photo for details. You could also just use many short stripped
@@ -223,8 +223,8 @@ segments of wire instead of a contiguous piece.
 Most of the row wires will need four segments of insulation, but
 you'll need two with five for the rows with the inner thumb
 keys. Physically the inner thumb keys look like two additional
-columns, but logically they are treated as if they're in the same
-column with the left one in row 3 and the right one in row 4.
+columns, but logically they are treated as if they're both in column
+number 6; the left key in row 3 and the right one in row 4.
 
 [[matrix.jpg]]
 
