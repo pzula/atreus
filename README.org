@@ -23,7 +23,7 @@ take into account the fact that the thumb is the strongest and most
 versatile of the fingers. This design avoids both these problems while
 taking a more couch-friendly single-piece approach.
 
-[[atreus.jpg]]
+[[./atreus.jpg]]
 
 Having so few keys, this board is pretty idiosyncratic. It works very
 well for the kind of work that I do, but it probably wouldn't be a
@@ -118,9 +118,9 @@ have to place some mis-labelled caps on the bottom row.
 
 ** Case
 
-Layered laser-cut acrylic; see [[file:case.svg][case.svg]].
+Layered laser-cut acrylic; see [[file:./case.svg][the =case.svg= file]].
 
-[[layers.jpg][layers.jpg]]
+[[./layers.jpg]]
 
 The first two shapes in the case file are the top and bottom covers;
 these should be cut on 3mm acrylic (black in the photo). The third is
@@ -209,7 +209,7 @@ symmetrical, so before inserting the switches it's important to ensure
 that the plate is right-side-up. Use a drop of hot glue on the top and
 bottom of each switch to affix it in place.
 
-[[wires.jpg]]
+[[./wires.jpg]]
 
 Once the switches are in place, the matrix must be created. I
 recommend getting red wire for the (positive) rows and black for the
@@ -218,7 +218,7 @@ exposed at intervals matching the spacing of the switches; see the
 above photo for details. You could also just use many short stripped
 segments of wire instead of a contiguous piece.
 
-[[thumb-diagram.jpg]]
+[[./thumb-diagram.png]]
 
 Most of the row wires will need four segments of insulation, but
 you'll need two with five for the rows with the inner thumb
@@ -226,7 +226,7 @@ keys. Physically the inner thumb keys look like two additional
 columns, but logically they are treated as if they're both in column
 number 6; the left key in row 3 and the right one in row 4.
 
-[[matrix.jpg]]
+[[./matrix.jpg]]
 
 The exposed sections of row wire should be connected to the higher of
 the pins on the switch using a diode. Be aware that diodes are
@@ -267,7 +267,7 @@ in order to solder it, you have to flip over the schematic in your
 mind too. If you count your columns from the left, you'll get them
 backwards. (Which I actually did for the first half.)
 
-[[controller.jpg]]
+[[./controller.jpg]]
 
 Once you've wired one side of the microcontroller in, it would be a
 good time to test it. You'll need to compile and upload as per the
