@@ -30,11 +30,8 @@ well for the kind of work that I do, but it probably wouldn't be a
 good fit for you if you do a lot of numerical data entry or make heavy
 use of function keys, arrows, or home/end. If you primarily use
 programs with good key rebinding functionality, you're probably in
-good shape. For instance, there is no =tab= key, but in a terminal,
-=control-i= literally sends a tab keycode, and other programs can be
-configured to treat it equivalently as well. Similarly, =enter= is in
-a bit of an awkward position, but many programs treat =control-m= as
-the same.
+good shape. For instance, =enter= is in a bit of an awkward position,
+but many programs treat =control-m= as the same.
 
 ** Layout
 
@@ -64,8 +61,8 @@ An alternate layout has the numbers in a more traditional row across the top:
 I type in Dvorak but prefer to do the remapping in software rather
 than hardware so I don't have to change layouts when I switch to my
 laptop's internal keyboard. However, the =hwdv= key switches it to
-hardware dvorak mode, which is useful for attaching to computers that
-may not have software dvorak set up. The =paste= key sends
+hardware Dvorak mode, which is useful for attaching to computers that
+may not have software Dvorak set up. The =paste= key sends
 shift+insert, while the =reset= button activates the bootloader,
 allowing easy reprogramming without opening the case.
 
@@ -111,7 +108,8 @@ few extras we won't use. There are two "deep dish" keys in that set
 which you can place under your index fingers on the home row to help
 guide your hands to the right spot without looking. However, you only
 get a single 1.5x keycap, and the middle two thumb keys both use them,
-so you might want to pick up an extra.
+so you might want to pick up an extra. (You can buy a single DSA 1.5x
+keycap from [[http://www.keycapsdirect.com/key-capsinventory.php][Signature Plastics]].)
 
 If you want labels on your keycaps, you can get a full labelled
 standard 104-key set from [[http://elitekeyboards.com/products.php?sub=access#cherrymxkeys][Elite Keyboards]] as well. However, the
@@ -128,9 +126,11 @@ The first two shapes in the case file are the top and bottom covers;
 these should be cut on 3mm acrylic (black in the photo). The third is
 the spacer that goes under the fourth, which is the plate on which the
 switches are mounted. These should be cut in 6mm, especially the
-spacer, which needs to be at least as thick as the micro USB cable you
-connect to the microcontroller. The switch plate could be thinner,
-but not under 3mm.
+spacer, which needs to be at least as thick as the mini USB cable you
+connect to the microcontroller. I recommend using a mini USB cable
+with as thin a connector as you can find or sanding the connector
+down to the required thickness. The switch plate could be thinner, but
+not under 3mm.
 
 On a 100W Epilog laser, the 3mm layers cut in about a minute and a
 half. I did a run with 6mm acrylic of the other layers which took
@@ -139,8 +139,8 @@ nearly 6 minutes.
 ** Firmware
 
 My [[https://github.com/technomancy/tmk_keyboard/tree/atreus][fork of the tmk firmware]] has support for the Atreus layout.  You
-should be able to cd into the =keyboard/atreus= directory and run
-=make KEYMAP\=atreus= (or whichever variant you want) to produce a
+should be able to change into the =keyboard/atreus= directory and run
+=make KEYMAP=atreus= (or whichever variant you want) to produce a
 qwerty =atreus.hex= file. You will probably want to create your own
 layout once you've gotten a chance to try it and see what works for
 you. Use the =.hex= file with the [[http://www.pjrc.com/teensy/loader.html][teensy loader]] or Arduino tools to
@@ -195,9 +195,9 @@ can be time-consuming though.
 *** Other Tools
 
 You'll need a soldering iron, solder, a glue gun, a multimeter, wire,
-wire strippers, and a USB mini cable. You'll also need seven M3
+wire strippers, and a 5-pin USB Mini-B cable. You'll also need seven M3
 machine screws with nuts; the length of the screws depends on the
-thickness of the acrylic you use. You can add rubber feet to thet
+thickness of the acrylic you use. You can add rubber feet to the
 bottom to prevent the board from sliding around when placed on a desk.
 
 ** Assembly
@@ -212,7 +212,7 @@ bottom of each switch to affix it in place.
 [[wires.jpg]]
 
 Once the switches are in place, the matrix must be created. I
-recommend getting red wire for the (postitive) rows and black for the
+recommend getting red wire for the (positive) rows and black for the
 (negative) columns. The rows need eight wires with the insulation
 exposed at intervals matching the spacing of the switches; see the
 above photo for details. You could also just use many short stripped
@@ -223,8 +223,8 @@ segments of wire instead of a contiguous piece.
 Most of the row wires will need four segments of insulation, but
 you'll need two with five for the rows with the inner thumb
 keys. Physically the inner thumb keys look like two additional
-columns, but logically they are treated as if they're in the same
-column with the left one in row 3 and the right one in row 4.
+columns, but logically they are treated as if they're both in column
+number 6; the left key in row 3 and the right one in row 4.
 
 [[matrix.jpg]]
 
@@ -243,12 +243,26 @@ switch is activated.
 
 After the matrix has been wired on both sides, the next step is to
 connect the microcontroller. The TMK firmware has the rows in pins D0,
-D1, D2, and D3 of the microcontroller. You'll need to connect the rows
+D1, D2, and D3 of the microcontroller.
+
+|------------+----+----+----+----|
+| row number |  1 |  2 |  3 |  4 |
+|------------+----+----+----+----|
+| pin number | D0 | D1 | D2 | D3 |
+
+You'll need to connect the rows
 from both the left and right sides into the proper pin. There are more
 columns than rows, so I used ribbon cable to bring the column
 connections back to the microcontroller from the outside in. The
 columns go to pins F0, F1, E6, C7, C6, B6, D4, B1, B0, B5, and
-B4. It's important to realize that when you flip over the board
+B4.
+
+|---------------+----+----+----+----+----+----+----+----+----+----+----|
+| column number |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 | 10 | 11 |
+|---------------+----+----+----+----+----+----+----+----+----+----+----|
+| pin number    | F0 | F1 | E6 | C7 | C6 | B6 | D4 | B1 | B0 | B5 | B4 |
+
+It's important to realize that when you flip over the board
 in order to solder it, you have to flip over the schematic in your
 mind too. If you count your columns from the left, you'll get them
 backwards. (Which I actually did for the first half.)
