@@ -6,7 +6,7 @@
 #define ROW_COUNT 4
 #define COL_COUNT 11
 
-#define FN_PRESSED (~PINB & 128)
+#define FN_PRESSED (~PINB & 8)
 
 #define CPU_PRESCALE(n) (CLKPR = 0x80, CLKPR = (n))
 
@@ -30,38 +30,23 @@ void reset(void);
 
 
 
-// numbers under 100: normal keys
-// numbers between 100 and 200: shifted keys
-// numbers over 200: function invocations
-
-int base_layout[ROW_COUNT][COL_COUNT] = \
-  { {20, 26, 8,   21,  23,  0,  28, 24, 12, 18, 19},      \
-    {4,  22, 7,   9,   10,  0,  11, 13, 14, 15, 51},      \
-    {29, 27, 6,   25,  5,  101, 17, 16, 54, 55, 56},      \
-    {41, 43, 108, 102, 42, 104, 44, 0,  52, 47, 40} };
-
-int fn_layout[ROW_COUNT][COL_COUNT] = \
-  { {108+30, 108+31, 108+45, 108+46, 108 + 49, 0, 75, 36, 37, 38, 108+37}, \
-    {108+32, 108+33, 108+38, 108+39, 53, 0, 78, 33, 34, 35, 108+46},    \
-    {108 + 34, 108 + 35, 45, 46, 108+53, 101, 49, 30, 31, 32, 108+47},  \
-    {255, 108 + 73, 108, 102, 0, 104, 0, 0, 55, 39, 48} };
+#include "layouts.h"
 
 int *current_row;
-
 int pressed_count = 0;
 
 
 
 void press(int keycode) {
-  if(!keycode || pressed_count >= 6) return;
-  if(keycode == 255 || keycode == 5) {
+  if(!keycode) return;
+  if(keycode == 255) {
     reset(); // TODO: make a table of codes -> functions
-  } else if(keycode > 108) {
+  } else if(keycode > 108 && pressed_count < 6) {
     keyboard_modifier_keys |= KEY_SHIFT;
     keyboard_keys[pressed_count++] = (keycode - 108);
   } else if(keycode > 100) {
     keyboard_modifier_keys |= (keycode - 100);
-  } else {
+  } else if(pressed_count < 6){
     keyboard_keys[pressed_count++] = keycode;
   };
 };
@@ -71,13 +56,25 @@ void activate_row(int row) {
 };
 
 void scan_row(int row) {
-  int cols = (~(PINB + ((PINF >> 4) << 8))) & 2047;
-  for(int col = 0; col < 8; col++) {
-    if(cols & 1) {
-      press(current_row[col]);
-    };
-    cols = cols >> 1;
-  };
+  // if((~PINF) & 64) reset();
+  unsigned int col_bits = ((~PINF << 4) & (1024 | 512 | 256)) | (~PINB & 255);
+  /* for(int col = 0; col < COL_COUNT; col++) { */
+  /*   if(col_bits & 1024) { */
+  /*     press(current_row[col]); */
+  /*   } */
+  /*   col_bits << 1; */
+  /* } */
+  if(col_bits & 1024) press(current_row[0]);
+  if(col_bits & 512) press(current_row[1]);
+  if(col_bits & 256) press(current_row[2]);
+  if(col_bits & 128) press(current_row[3]);
+  if(col_bits & 64) press(current_row[4]);
+  if(col_bits & 32) press(current_row[5]);
+  if(col_bits & 16) press(current_row[6]);
+  if(col_bits & 8) press(current_row[7]);
+  if(col_bits & 4) press(current_row[8]);
+  if(col_bits & 2) press(current_row[9]);
+  if(col_bits & 1) press(current_row[10]);
 };
 
 
@@ -85,10 +82,8 @@ void scan_row(int row) {
 void init() {
   CPU_PRESCALE(0);
   DDRD = 255;
-  DDRB = 0;
-  DDRF = 0;
-  PORTB = 255;
-  PORTF = 255;
+  DDRB = DDRF = 0;
+  PORTB = PORTF = 255;
   usb_init();
   while (!usb_configured()) /* wait */ ;
   _delay_ms(1000);
@@ -119,9 +114,7 @@ int main() {
 };
 
 void reset(void) {
-  UDCON = 1;
-  USBCON = (1<<FRZCLK);
-  UCSR1B = 0;
+  UDCON = 1; USBCON = (1<<FRZCLK); UCSR1B = 0;
   _delay_ms(5);
   EIMSK = 0; PCICR = 0; SPCR = 0; ACSR = 0; EECR = 0; ADCSRA = 0;
   TIMSK0 = 0; TIMSK1 = 0; TIMSK3 = 0; TIMSK4 = 0; UCSR1B = 0; TWCR = 0;
