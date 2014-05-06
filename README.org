@@ -78,19 +78,11 @@ This layout has five modifiers and 37 non-modifiers.
 
 I strongly prefer the feel and sound of tactile [[http://mechanicalkeyboards.com/shop/index.php?l=product_detail&p=651][Cherry MX blue]]
 switches for typing. However, I like having linear switches on the
-modifier keys (ctrl, alt, super, shift, and fn). [[http://mechanicalkeyboards.com/shop/index.php?l=product_detail&p=102][Cherry MX red switches]]
-are nice and light but are expensive and difficult to
+modifier keys (ctrl, alt, super, shift, and fn). [[http://mechanicalkeyboards.com/shop/index.php?l=product_detail&p=102][Cherry MX red
+switches]] are nice and light but are more expensive and difficult to
 find. [[http://mechanicalkeyboards.com/shop/index.php?l=product_detail&p=103][Cherry MX black switches]] are cheaper and easier to source, but
-may be too heavy, especially for keys under pinky fingers.
-
-One trick is take the springs from some of your blue switches and
-trade them with the springs from your black switches. The blacks then
-become the equivalent of reds, and the blues become MX green switches,
-which are a heavier variant of blues. These are typically used for
-space bars on boards that otherwise use blues. They could be suitable
-for non-modifier thumb keys like backspace, space, and enter. However,
-the recommended layout above has all its modifiers under the thumbs,
-so this is not an issue.
+may be too heavy if you modify the layout to include modifiers under
+the pinkies.
 
 *** Diodes
 
@@ -112,14 +104,11 @@ get a single 1.5x keycap, and the middle two thumb keys both use them,
 so you might want to pick up an extra. (You can buy a single DSA 1.5x
 keycap from [[http://www.keycapsdirect.com/key-capsinventory.php][Signature Plastics]].)
 
-If you want labels on your keycaps, you can get a full labelled
-standard 104-key set from [[http://elitekeyboards.com/products.php?sub=access#cherrymxkeys][Elite Keyboards]] as well. However, the
-modifiers in that set are larger than what the Atreus uses, so you'll
-have to place some mis-labelled caps on the bottom row.
-
 ** Case
 
-Layered laser-cut acrylic; see [[file:./case.svg][the =case.svg= file]].
+Layered laser-cut wood or acrylic; see [[file:./case.svg][the =case.svg= file]].
+
+TODO: mention the difference between mk. I and mk. II cases.
 
 [[./layers.jpg]]
 
@@ -137,24 +126,27 @@ On a 100W Epilog laser, the 3mm layers cut in about a minute and a
 half. I did a run with 6mm acrylic of the other layers which took
 nearly 6 minutes.
 
+TODO: describe finishing process for wood.
+
 ** Firmware
 
-My [[https://github.com/technomancy/tmk_keyboard/tree/atreus][fork of the tmk firmware]] has support for the Atreus layout.  You
-should be able to change into the =keyboard/atreus= directory and run
-=make KEYMAP=atreus= (or whichever variant you want) to produce a
-qwerty =atreus.hex= file. You will probably want to create your own
-layout once you've gotten a chance to try it and see what works for
-you. Use the =.hex= file with the [[http://www.pjrc.com/teensy/loader.html][teensy loader]] or Arduino tools to
-upload to the microcontroller.
+The [[https://gitlab.com/technomancy/atreus-firmware/blob/master/readme.md][custom Atreus firmware]] is a small (~100 LOC) project which
+implements matrix scanning and debouncing with user-customizeable
+layers and macro functions. Another option is the much more complex
+TMK firmware. My [[https://github.com/technomancy/tmk_keyboard/tree/atreus][fork of the tmk firmware]] has support for the Atreus
+layout. You should be able to change into the =keyboard/atreus=
+directory and run =make KEYMAP=atreus= (or whichever variant you want)
+to produce a qwerty =atreus.hex= file. You will probably want to
+create your own layout once you've gotten a chance to try it and see
+what works for you.
+
+In either case you would use the =.hex= file produced with the [[http://www.pjrc.com/teensy/loader.html][teensy
+loader]] or Arduino tools to upload to the microcontroller.
 
 Once the firmware is loaded and the keyboard is assembled, pressing
 the onboard reset button to update new versions of the firmware is
 pretty cumbersome; instead use the "reset" button on the lower left
 of the layout which has the same effect.
-
-I'm working on an experimental Forth-based firmware in the [[https://github.com/technomancy/orestes][Orestes]]
-project, but that project is still in its infancy at the time of this
-writing.
 
 ** Bill of Materials
 
@@ -165,12 +157,11 @@ writing.
 - Acrylic materials: $11
 - Acrylic laser cutting: 7.5 at $3/min (varies by thickness of acrylic)
 
-- Labelled 104 keycap set: $20.00 (optional, replaces DSA set above)
 - 5 MX Black switches: $8.50 (optional)
 - 5 MX Red switches: $10.00 (optional)
 - additional 1.5x DSA keycap: $1 (optional)
 
-=(+ 29 3.45 18 16 11 (* 3 7.5))= $99.95 plus tax/shipping
+=(+ 29 3.45 18 16 11 (* 3 10))= $99.95 plus tax/shipping
 
 - mechanicalkeyboards.com: free shipping in the US
 - Signature Plastics (keycaps) US shipping: $8.00
@@ -210,6 +201,8 @@ symmetrical, so before inserting the switches it's important to ensure
 that the plate is right-side-up. Use a drop of hot glue on the top and
 bottom of each switch to affix it in place.
 
+TODO: document using the diode legs for the columns.
+
 [[./wires.jpg]]
 
 Once the switches are in place, the matrix must be created. I
@@ -243,25 +236,39 @@ be able to get continuity from row to column when the corresponding
 switch is activated.
 
 After the matrix has been wired on both sides, the next step is to
-connect the microcontroller. The TMK firmware has the rows in pins D0,
-D1, D2, and D3 of the microcontroller.
+connect the microcontroller. Both the Atreus and TMK firmwares have
+the rows in pins D0, D1, D2, and D3 of the microcontroller.
 
 |------------+----+----+----+----|
 | row number |  1 |  2 |  3 |  4 |
 |------------+----+----+----+----|
 | pin number | D0 | D1 | D2 | D3 |
 
-You'll need to connect the rows
-from both the left and right sides into the proper pin. There are more
+You'll need to connect the rows from the right side to the left side,
+which then should be wired to the proper pin. There are more
 columns than rows, so I used ribbon cable to bring the column
-connections back to the microcontroller from the outside in. The
-columns go to pins F0, F1, E6, C7, C6, B6, D4, B1, B0, B5, and
-B4.
+connections back to the microcontroller from the outside in.
+
+Depending on the firmware you want to use, you'll wire the columns
+differently. The simpler Atreus firmware simply starts at B0 and goes
+up to F4-6, while the more featureful TMK firmware jumps all over the
+place.
+
+Atreus:
+
+|---------------+----+----+----+----+----+----+----+----+----+----+----|
+| column number |  0 |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 | 10 |
+|---------------+----+----+----+----+----+----+----+----+----+----+----|
+| pin number    | B0 | B1 | B2 | B3 | B4 | B5 | B6 | B7 | F4 | F5 | F6 |
+
+TMK:
 
 |---------------+----+----+----+----+----+----+----+----+----+----+----|
 | column number |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 | 10 | 11 |
 |---------------+----+----+----+----+----+----+----+----+----+----+----|
 | pin number    | F0 | F1 | E6 | C7 | C6 | B6 | D4 | B1 | B0 | B5 | B4 |
+
+(It may be possible to adapt the TMK firmware to the consecutive pinout.)
 
 It's important to realize that when you flip over the board
 in order to solder it, you have to flip over the schematic in your
