@@ -7,5 +7,12 @@ This directory contains design files for a laser cut Atreus case.
 - =case.dxf= contains the same design but uses a spacer made out one piece.
 - =ready-for-ponoko.svg= is the file successfully used to make an
   Atreus case using Ponoko.
+- =atreus-12x24.svg= This SVG file can be imported into a graphics
+  program attached to the laser cutter at a local maker space to print
+  out the entire case on one 12x24 sheet.
+- =atreus-12x24-300dpi.eps= This file can be imported into a graphics
+  program attached to the laser cutter at a local maker space to print
+  out the entire case on one 12x24 sheet. The 300dpi is a common standard
+  for the resolution required to laser cut.
 - =keys.dxf= contains Cherry MX switch holes with 1x1 and 1x1.5 key
   outlines. They can be used as building blocks for new case designs.
